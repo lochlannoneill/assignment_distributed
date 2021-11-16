@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package distributed;
+
+message GameRequest {
+}
+
+message GameResponse {
+  string pangram = 1;
+  string requiredLetter = 2;
+}
+
+message WordRequest {
+  string word = 1;
+}
+
+message WordResponse {
+  bool isWord = 1;
+}
+
+message PointsRequest {
+}
+
+message PointsResponse {
+  int32 points = 1;
+}
+
+service SpellingB {
+  rpc StartGame(GameRequest) returns (GameResponse) {}
+  rpc VerifyWord(WordRequest) returns (WordResponse) {}
+  rpc ReturnPoints(PointsRequest) returns (PointsResponse) {}
+}
